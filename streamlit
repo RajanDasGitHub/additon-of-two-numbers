@@ -1,0 +1,32 @@
+%%writefile streamlit_second_app.py
+import streamlit as st
+import pandas as pd
+from sklearn import datasets
+from sklearn.ensemble import RandomForestClassifier
+import pickle
+st.write("""
+#Streamlit Web Application
+
+Addition of 2 given numbers
+""")
+st.header('User Input Paramaters')
+#df = pd.DataFrame({"A":[1,2,3], "B":[4,5,6]})
+#st.write(df)
+
+def user_input_features():
+    first_number = st.number_input("FIRST_NUMBER",min_value=0.0,max_value=9999999.0)
+    second_number = st.number_input("SECOND_NUMBER",min_value=0.0,max_value=9999999.0)
+    addition = first_number + second_number
+    st.write(addition)
+    
+    data = {'FIRST_NUMBER': first_number, 'SECOND_NUMBER': second_number}
+
+    features = pd.DataFrame(data, index=[0])
+    return features
+
+df = user_input_features()
+#addition = first_number + second_number
+#st.write(addition)
+
+#st.subheader('User Input parameters')
+#st.write(df.to_dict())
